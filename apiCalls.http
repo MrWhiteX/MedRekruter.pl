@@ -1,0 +1,49 @@
+POST http://localhost:3000/api/offers
+Content-Type: application/json
+
+{
+    "title": "TEST 123",
+    "category": "doctor",
+    "mobile": "662852145",
+    "description": "Test Desc",
+    "location":"Warszawa",
+    "company": "Bud",
+    "price":"1234",
+    "status": "active"
+
+}
+
+###
+
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "email": "test@email.pl",
+    "password": "123456",
+    "fullName": "John Doe"
+ 
+
+}
+
+
+###
+GET http://localhost:3000/api/offers/paginate
+
+
+###
+POST http://localhost:3000/api/users/resetPassword
+content-type: application/json
+
+{
+  "email": "testemail2@email.pl"
+}
+
+###
+PUT http://localhost:3000/api/users/resetPassword
+content-type: application/json
+
+{
+  "resetToken": "faea5e945a4db82e58d9610dc34fb0011d8ae68325e7",
+  "password": "12345"
+}
