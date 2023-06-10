@@ -13,6 +13,8 @@ import { useSession } from 'next-auth/client';
 import { OfferType } from 'types/types';
 import { debounce } from 'lodash';
 import { categoryTranslate } from 'helpers/categoryTranslator';
+import Loader from 'animations/Loader/Loader';
+import { dictData } from 'dicData';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const offers: OfferType[] = await getRecentOffers(6);
@@ -29,8 +31,11 @@ export const getStaticProps: GetStaticProps = async ({
   const offerId = params && typeof params.id === 'string' ? parseInt(params.id, 10) : undefined;
   const offer: OfferType = offerId !== undefined ? await getSingleOffer(offerId) : undefined;
 
-  console.log(typeof offerId);
-
+  if (!offer) {
+    return {
+      notFound: true
+    };
+  }
   return {
     props: {
       offer,
@@ -48,7 +53,18 @@ export default function OfferPage({ offer }: { offer: OfferType }) {
   if (router.isFallback) {
     return (
       <BaseLayout>
-        <div>Loading...</div>
+        <section className="text-gray-600 body-font overflow-hidden container mx-auto">
+          <div className="container mx-auto">
+            <div
+              className="flex items-center justify-center flex-col"
+              style={{
+                height: '100vh'
+              }}>
+              <p className="text-4xl text-center mt-10">{dictData.loading}</p>
+              <Loader />
+            </div>
+          </div>
+        </section>
       </BaseLayout>
     );
   }

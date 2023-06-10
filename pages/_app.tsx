@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { AppProps } from 'next/app';
 import 'styles/globals.css';
 import { Provider } from 'next-auth/client';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 interface CustomPageProps extends AppProps {
   pageProps: {
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }: CustomPageProps) {
           content={metaDescription ? metaDescription : 'Znajdź ofertę pracy związaną z medycyną'}
         />
       </Head>
-      <Component {...pageProps} />
+      <ErrorBoundary>
+        <Component {...pageProps} />
+      </ErrorBoundary>
     </Provider>
   );
 }

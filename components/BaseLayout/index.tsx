@@ -92,8 +92,10 @@ const TopNavigation = () => {
 };
 
 const Footer = () => (
-  <footer className="text-gray-600 body-font ">
-    <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+  <footer
+    className="fixed bottom-0 left-0 bg-white w-screen h-16.5 text-gray-600 body-font shadow-indigo-500/50	"
+    style={{ height: '72px' }}>
+    <div className="container px-5 h-full mx-auto flex items-center sm:flex-row flex-col">
       <a
         href="/"
         className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
@@ -132,9 +134,11 @@ interface AuxProps {
 export default function BaseLayout({ children }: AuxProps) {
   return (
     <>
-      <TopNavigation />
-      {children}
-      <Footer />
+      <div className="min-h-screen">
+        <TopNavigation />
+        {children}
+        <Footer />
+      </div>
     </>
   );
 }

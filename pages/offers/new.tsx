@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import BaseLayout from 'components/BaseLayout';
 import { useRouter, NextRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
+import { dictData } from 'dicData';
 
 export default function OfferNew() {
   const [formProccesing, setFormProccesing] = useState<boolean>(false);
@@ -56,7 +57,7 @@ export default function OfferNew() {
   }
 
   if (!loading && !session) {
-    return <div>Proszę się zalogować</div>;
+    return <div>{dictData.login}</div>;
   }
 
   return (
@@ -65,7 +66,7 @@ export default function OfferNew() {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-              Dodaj ofertę pracy
+              {dictData.addJobOffer}
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
           </div>
@@ -74,27 +75,28 @@ export default function OfferNew() {
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="category" className="leading-7 text-sm text-gray-600">
-                    Kategoria
+                    {dictData.offerCategory}
                   </label>
                   <select
                     name="category"
                     id="category"
                     className="h-10 w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    <option value="doctor">Lekarz</option>
-                    <option value="nurse">Pielęgniarka</option>
-                    <option value="other">Inne</option>
+                    <option value="doctor">{dictData.optionDoctor}</option>
+                    <option value="nurse">{dictData.optionNurse}</option>
+                    <option value="other">{dictData.optionOther}</option>
                   </select>
                 </div>
               </div>
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label htmlFor="title" className="leading-7 text-sm text-gray-600">
-                    Tytuł Ogłoszenia
+                    {dictData.titleOffer}
                   </label>
                   <input
                     type="text"
                     id="title"
                     name="title"
+                    maxLength={34}
                     required
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -103,7 +105,7 @@ export default function OfferNew() {
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label htmlFor="location" className="leading-7 text-sm text-gray-600">
-                    Lokalizacja
+                    {dictData.location}
                   </label>
                   <input
                     type="text"
@@ -117,7 +119,7 @@ export default function OfferNew() {
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label htmlFor="price" className="leading-7 text-sm text-gray-600">
-                    Stawka (PLN)
+                    {dictData.price}
                   </label>
                   <input
                     type="text"
@@ -131,7 +133,7 @@ export default function OfferNew() {
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label htmlFor="phone" className="leading-7 text-sm text-gray-600">
-                    Numer telefonu
+                    {dictData.phoneNumber}
                   </label>
                   <input
                     type="text"
@@ -145,7 +147,7 @@ export default function OfferNew() {
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="phone" className="leading-7 text-sm text-gray-600">
-                    Nazwa podmiotu
+                    {dictData.titleCompany}
                   </label>
                   <input
                     type="text"
@@ -160,12 +162,13 @@ export default function OfferNew() {
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="description" className="leading-7 text-sm text-gray-600">
-                    Opis
+                    {dictData.description}
                   </label>
                   <textarea
                     id="description"
                     name="description"
                     required
+                    minLength={100}
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
               </div>
@@ -179,7 +182,7 @@ export default function OfferNew() {
                 {error && (
                   <div className="flex justify-center w-full my-5">
                     <span className="bg-red-600 w-full rounded text-white p-2.5">
-                      Oferta nie dodana: {error}
+                      {dictData.offerNotAdded} {error}
                     </span>
                   </div>
                 )}

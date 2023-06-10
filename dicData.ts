@@ -5,5 +5,20 @@ export const dictData = {
   myOffers: 'Moje oferty',
   welcomePageTitle: 'Witaj na stronie MedRekruter.pl',
   myOffersEmptyState: 'Aktualnie nie posiadasz dodanych ofert.',
-  myOffersAdd: 'Dodaj ofertę'
+  myOffersAdd: 'Dodaj ofertę',
+  description: 'Opis',
+  titleCompany: 'Nazwa podmiotu',
+  titleOffer: 'Tytuł Ogłoszenia',
+  offerCategory: 'Kategoria',
+  offerNotAdded: 'Oferta nie dodana:',
+  phoneNumber: 'Numer telefonu',
+  price: 'Stawka (PLN)',
+  location: 'Lokalizacja',
+  optionNurse: 'Lekarz',
+  optionDoctor: 'Pielęgniarka',
+  optionOther: 'Inne',
+  addJobOffer: 'Dodaj ofertę pracy',
+  login: 'Proszę się zalogować',
+  noPage: 'Strona, której szukasz nie istnieje lub została usunięta.',
+  loading: 'Wczytywanie...'
 };
